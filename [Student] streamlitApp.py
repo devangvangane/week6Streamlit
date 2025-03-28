@@ -1,6 +1,6 @@
 # Import the required libraries: Streamlit, NumPy, and Pillow (PIL).
 import streamlit as st
-import pickle
+import joblib
 import numpy as np
 from PIL import Image
 import os
@@ -34,7 +34,7 @@ def download_model():
         gdown.download(url, model_path, quiet=False)
     
     with open(model_path, "rb") as file:
-        model = pickle.load(file)
+        model = joblib.load(file)
     return model
 
 model = download_model()
