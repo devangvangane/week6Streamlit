@@ -19,7 +19,7 @@ def train_model(data):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     model = RandomForestRegressor(n_estimators=100, random_state=42)
     model.fit(X_train, y_train)
-    return model, X_train.columns  # Return model and feature names
+    return model, X_train.columns
 
 model, feature_names = train_model(data)
 
@@ -55,10 +55,10 @@ else:
         if cat_feature_shipping in feature_names:
             input_data[cat_feature_shipping] = 1
 
-        # Ensure input data matches training feature columns
+        # input data matches training feature columns
         input_data = input_data[feature_names]
 
-        # Make prediction
+        # predict
         prediction = model.predict(input_data)[0]
         st.success(f"🚀 Expected delivery time: {prediction:.1f} days")
 
