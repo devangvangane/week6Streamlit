@@ -5,10 +5,7 @@ import numpy as np
 from PIL import Image
 
 # Set the page configuration of the app, including the page title, icon, and layout.
-"""
-Your Code Here
 
-"""
 st.set_page_config(
     page_title="Timelytics",
     page_icon="🚚",
