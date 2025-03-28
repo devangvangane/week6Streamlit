@@ -26,15 +26,22 @@ st.caption(
     "With Timelytics, businesses can identify potential bottlenecks and delays in their supply chain and take proactive measures to address them, reducing lead times and improving delivery times. The model utilizes historical data on order processing times, production lead times, shipping times, and other relevant variables to generate accurate forecasts of OTD times. These forecasts can be used to optimize inventory management, improve customer service, and increase overall efficiency in the supply chain."
 )
 
+file_id = "1dXu70NMfN2wdJGMKTEC84AwYKQglxAco"
+model_path = "voting_model.pkl"
 
-# Load the trained ensemble model from the saved pickle file.
-modelfile = "./voting_model.pkl"
-"""
-Your Code Here
-"""
-def load_model():
-    with open(modelfile,"rb") as file:
+def download_model():
+    if not os.path.exists(model_path):
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, model_path, quiet=False)
+    
+    with open(model_path, "rb") as file:
         model = pickle.load(file)
+    return model
+
+model = download_model()
+
+
+def load_model():
     return model
 
 
